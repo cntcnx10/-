@@ -1,259 +1,126 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - ประกายทิพย์ น้อยสิงห์</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --pastel-blue: #e1f5fe;
-            --pastel-green: #e8f5e9;
-            --deep-blue: #0277bd;
-            --deep-green: #2e7d32;
-            --text-dark: #37474f;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Sarabun', sans-serif;
+    }
 
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #f4f7f6;
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg,#ffd6e7,#fff0f5,#ffe4ec);
+    }
 
-        .resume-card {
-            max-width: 900px;
-            width: 100%;
-            background: white;
-            display: flex;
-            flex-wrap: wrap;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
+    .card{
+      width:420px;
+      background:white;
+      border-radius:30px;
+      padding:35px;
+      text-align:center;
+      box-shadow:0 15px 35px rgba(0,0,0,0.15);
+      transition:0.3s;
+    }
 
-        /* ส่วนแถบด้านซ้าย (Sidebar) */
-        .sidebar {
-            flex: 1;
-            min-width: 300px;
-            background: linear-gradient(180deg, var(--pastel-blue), var(--pastel-green));
-            padding: 40px 30px;
-            text-align: center;
-        }
+    .card:hover{
+      transform:translateY(-5px);
+    }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 6px solid white;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            background-color: #fff;
-        }
+    .profile-img{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid #ff73a5;
+      margin-bottom:20px;
+      box-shadow:0 5px 15px rgba(255,115,165,0.4);
+    }
 
-        .side-section {
-            text-align: left;
-            margin-top: 30px;
-        }
+    h1{
+      color:#ff4f87;
+      font-size:30px;
+      margin-bottom:8px;
+    }
 
-        .side-title {
-            font-weight: 700;
-            color: var(--deep-green);
-            border-bottom: 2px solid white;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-            letter-spacing: 1px;
-        }
+    h2{
+      color:#666;
+      font-size:18px;
+      margin-bottom:25px;
+      font-weight:normal;
+    }
 
-        .info-text {
-            font-size: 0.9em;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
+    .info{
+      text-align:left;
+      line-height:1.9;
+      color:#444;
+      font-size:15px;
+    }
 
-        /* ส่วนเนื้อหาหลักด้านขวา (Main Content) */
-        .main-content {
-            flex: 2;
-            min-width: 400px;
-            padding: 50px 40px;
-            position: relative;
-        }
+    .title{
+      color:#ff4f87;
+      font-weight:bold;
+    }
 
-        /* ภาพพื้นหลังจางๆ เกี่ยวกับ Logistics */
-        .main-content::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.04;
-            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            pointer-events: none;
-        }
+    .btn{
+      display:inline-block;
+      margin-top:25px;
+      padding:12px 28px;
+      border-radius:30px;
+      background:#ff5c93;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
 
-        h1 { 
-            color: var(--deep-blue); 
-            font-size: 2.2em; 
-            margin-bottom: 5px; 
-        }
+    .btn:hover{
+      background:#ff2d74;
+    }
 
-        .eng-name { 
-            color: var(--deep-green); 
-            font-weight: 600; 
-            margin-bottom: 20px; 
-            letter-spacing: 1px;
-        }
-        
-        .intro-box {
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-align: justify;
-        }
-
-        .content-header {
-            background-color: var(--pastel-green);
-            padding: 8px 15px;
-            border-left: 5px solid var(--deep-green);
-            font-weight: 700;
-            margin: 25px 0 15px;
-            color: var(--deep-green);
-        }
-
-        .exp-box {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 2px solid #e0e0e0;
-        }
-
-        .exp-year {
-            font-size: 0.85em;
-            font-weight: 700;
-            color: var(--deep-blue);
-        }
-
-        .exp-title {
-            display: block;
-            font-weight: 600;
-            margin: 3px 0;
-            color: #333;
-        }
-
-        ul.list-details {
-            font-size: 0.9em;
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-
-        ul.list-details li {
-            margin-bottom: 3px;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            background: white;
-            padding: 5px 14px;
-            margin: 4px 2px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            border: 1px solid #d1d1d1;
-            color: var(--deep-blue);
-            font-weight: 600;
-        }
-
-        @media (max-width: 600px) {
-            .resume-card { flex-direction: column; }
-            .sidebar { min-width: 100%; }
-            .main-content { padding: 30px 20px; min-width: 100%; }
-        }
-    </style>
+  </style>
 </head>
+
 <body>
 
-    <div class="resume-card">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- แก้ไขชื่อไฟล์รูปภาพตามที่ระบุ -->
-            <img src="ประกายทิพย์ น้อยสิงห์.jpg" alt="รูปโปรไฟล์ ประกายทิพย์" class="profile-img">
-            
-            <div class="side-section">
-                <div class="side-title">การติดต่อ</div>
-                <div class="info-text">📞 0932284037</div>
-                <div class="info-text">📧 prakaithipnn@gmail.com</div>
-                <div class="info-text">📍 แจ้งวัฒนะ ปากเกร็ด</div>
-            </div>
+  <div class="card">
 
-            <div class="side-section">
-                <div class="side-title">ทักษะความชำนาญ</div>
-                <div class="skill-badge">จัดการคลังสินค้า</div>
-                <div class="skill-badge">ประสานงานขนส่ง</div>
-                <div class="skill-badge">MS Office</div>
-                <div class="skill-badge">ทำงานเป็นทีม</div>
-                <div class="skill-badge">ระบบ MIS</div>
-            </div>
+    <!-- ใส่รูปของคุณในโฟลเดอร์เดียวกัน -->
+    <!-- ชื่อไฟล์ต้องเป็น: ประกายทิพย์ น้อยสิงห์.jpg -->
+    <img src="ประกายทิพย์ น้อยสิงห์.jpg" alt="profile" class="profile-img">
 
-            <div class="side-section">
-                <div class="side-title">การศึกษา</div>
-                <div class="info-text">
-                    <strong>ปริญญาตรี (2566 - ปัจจุบัน)</strong><br>
-                    คณะการจัดการโลจิสติกส์และการคมนาคมขนส่ง<br>
-                    สถาบันการจัดการปัญญาภิวัฒน์ (PIM)
-                </div>
-            </div>
-        </div>
+    <h1>นางสาวประการทิพย์ น้อยสิงห์</h1>
+    <h2>รหัสนักศึกษา : 6650101117</h2>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <h1>ประกายทิพย์ น้อยสิงห์</h1>
-            <div class="eng-name">PRAKAITHIP NOISING</div>
+    <div class="info">
 
-            <div class="intro-box">
-                <strong>นิยามตัวเอง:</strong> นักศึกษาสาขาการจัดการโลจิสติกส์และการคมนาคมขนส่ง มีประสบการณ์ฝึกงานด้านข้อมูลจ่ายและประสานงานคลังสินค้า มีความกระตือรือร้นในการจัดการข้อมูล การวางแผนจัดส่ง และการสื่อสารประสานงานภายในองค์กร พร้อมที่จะเรียนรู้เทคโนโลยีใหม่ๆ เพื่อพัฒนาประสิทธิภาพในสายงานโลจิสติกส์
-            </div>
+      <p><span class="title">สาขาวิชา :</span> โลจิสติกส์และการคมนาคมขนส่ง</p>
 
-            <div class="content-header">ประสบการณ์ฝึกงาน</div>
+      <p><span class="title">ความสามารถ :</span> มีทักษะด้านการวิเคราะห์ข้อมูล การบริหารจัดการ และการวางแผนระบบขนส่งอย่างมีประสิทธิภาพ สามารถเรียนรู้เทคโนโลยีใหม่ได้อย่างรวดเร็ว</p>
 
-            <div class="exp-box">
-                <span class="exp-year">ธันวาคม 2566 - กุมภาพันธ์ 2569</span>
-                <span class="exp-title">ศูนย์กระจายสินค้า (งานคลังและประสานงาน)</span>
-                <ul class="list-details">
-                    <li>รับผิดชอบการจัดการข้อมูลรับ-จ่าย และวางแผนเส้นทางการจัดส่งสินค้า</li>
-                    <li>ประสานงานระหว่างแผนกเพื่อความรวดเร็วในการเคลื่อนย้ายสินค้า</li>
-                    <li>เสนอแนวคิดในการปรับปรุงกระบวนการจัดเก็บเพื่อลดระยะเวลาการทำงาน</li>
-                </ul>
-            </div>
+      <p><span class="title">จุดเด่น :</span> เป็นคนมีความเป็นผู้นำ กล้าคิด กล้าตัดสินใจ มีความคิดสร้างสรรค์ และสามารถแก้ปัญหาเฉพาะหน้าได้ดี</p>
 
-            <div class="exp-box">
-                <span class="exp-year">มิถุนายน - สิงหาคม 2566</span>
-                <span class="exp-title">ศูนย์กระจายสินค้า (งานคลังและ MIS)</span>
-                <ul class="list-details">
-                    <li>ดูแลความเรียบร้อยภายในคลังสินค้าและตรวจสอบคัดแยกสินค้าชำรุด</li>
-                    <li>บันทึกและวิเคราะห์ข้อมูลผ่านระบบจัดการสารสนเทศ (MIS)</li>
-                </ul>
-            </div>
+      <p><span class="title">ประสบการณ์ :</span> มีความสนใจด้านธุรกิจดิจิทัล การตลาดออนไลน์ และการจัดการโลจิสติกส์สมัยใหม่ พร้อมทั้งมีประสบการณ์ในการทำงานร่วมกับทีมและบริหารโครงการภายในมหาวิทยาลัย</p>
 
-            <div class="exp-box">
-                <span class="exp-year">มิถุนายน 2566 - กุมภาพันธ์ 2567</span>
-                <span class="exp-title">ร้าน 7-ELEVEN (แคชเชียร์และบริการลูกค้า)</span>
-                <ul class="list-details">
-                    <li>ให้บริการลูกค้าด้วยมนุษยสัมพันธ์ที่ดี และบริหารจัดการยอดขายหน้าเคาน์เตอร์</li>
-                    <li>ดูแลการจัดเรียงสินค้า (Merchandising) และตรวจสอบคุณภาพสินค้าตามมาตรฐาน FIFO</li>
-                </ul>
-            </div>
+      <p><span class="title">เป้าหมายในอนาคต :</span> ต้องการพัฒนาตนเองให้เป็นผู้เชี่ยวชาญด้านโลจิสติกส์และซัพพลายเชนระดับสากล รวมถึงสร้างธุรกิจที่ประสบความสำเร็จในอนาคต</p>
 
-            <p style="text-align: right; color: #ccc; font-size: 0.85em; margin-top: 40px; font-weight: 300;">
-                Panyapiwat Institute of Management
-            </p>
-        </div>
+      <p><span class="title">เกี่ยวกับตัวฉัน :</span>
+      เป็นคนมุ่งมั่น ชอบเรียนรู้สิ่งใหม่ ๆ มีวิสัยทัศน์ในการทำงาน รักความก้าวหน้า และเชื่อว่าความสำเร็จเกิดจากความพยายามและวินัย
+      </p>
+
     </div>
+
+    <a href="#" class="btn">WELCOME TO MY PROFILE</a>
+
+  </div>
 
 </body>
 </html>
