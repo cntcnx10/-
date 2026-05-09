@@ -1,126 +1,265 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Specialist Profile - Prakaithip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-blue: #0a192f;
+            --neon-blue: #00d4ff;
+            --neon-purple: #9d00ff;
+            --glass: rgba(255, 255, 255, 0.07);
+            --border: rgba(0, 212, 255, 0.2);
+        }
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Sarabun', sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background: linear-gradient(135deg,#ffd6e7,#fff0f5,#ffe4ec);
-    }
+        body {
+            background-color: var(--space-blue);
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            color: #ffffff;
+            font-family: 'Prompt', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
 
-    .card{
-      width:420px;
-      background:white;
-      border-radius:30px;
-      padding:35px;
-      text-align:center;
-      box-shadow:0 15px 35px rgba(0,0,0,0.15);
-      transition:0.3s;
-    }
+        /* Profile Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 800px;
+            padding: 50px;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .card:hover{
-      transform:translateY(-5px);
-    }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--neon-blue), transparent 30%);
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+            opacity: 0.1;
+        }
 
-    .profile-img{
-      width:170px;
-      height:170px;
-      border-radius:50%;
-      object-fit:cover;
-      border:6px solid #ff73a5;
-      margin-bottom:20px;
-      box-shadow:0 5px 15px rgba(255,115,165,0.4);
-    }
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
 
-    h1{
-      color:#ff4f87;
-      font-size:30px;
-      margin-bottom:8px;
-    }
+        /* Profile Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    h2{
-      color:#666;
-      font-size:18px;
-      margin-bottom:25px;
-      font-weight:normal;
-    }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--neon-blue);
+            padding: 5px;
+            object-fit: cover;
+            box-shadow: 0 0 30px var(--neon-blue);
+            margin-bottom: 20px;
+        }
 
-    .info{
-      text-align:left;
-      line-height:1.9;
-      color:#444;
-      font-size:15px;
-    }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .title{
-      color:#ff4f87;
-      font-weight:bold;
-    }
+        .nickname {
+            font-size: 1.2rem;
+            color: var(--neon-purple);
+            margin-top: 5px;
+        }
 
-    .btn{
-      display:inline-block;
-      margin-top:25px;
-      padding:12px 28px;
-      border-radius:30px;
-      background:#ff5c93;
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.3s;
-    }
+        .student-id {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 5px;
+        }
 
-    .btn:hover{
-      background:#ff2d74;
-    }
+        .position {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-  </style>
+        /* About Section */
+        .about-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--neon-purple);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        /* Grid Layout */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .info-grid { grid-template-columns: 1fr; }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        li::before {
+            content: '✦';
+            color: var(--neon-blue);
+        }
+
+        /* Contact Section */
+        .contact-footer {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-item b { color: var(--neon-blue); }
+
+        /* Slogan */
+        .slogan {
+            text-align: center;
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 1rem;
+            color: #86efac;
+            text-shadow: 0 0 10px rgba(134, 239, 172, 0.5);
+        }
+
+    </style>
 </head>
-
 <body>
 
-  <div class="card">
+    <div class="card">
+        <div class="header">
+            <!-- รูปโปรไฟล์ -->
+            <img src="ประกายทิพย์ น้อยสิงห์.jpg" alt="Prakaithip N." class="profile-img">
+            <h1>ประกายทิพย์ น้อยสิงห์</h1>
+            <div class="nickname">ชื่อเล่น: ปราย</div>
+            <div class="student-id">ID: 6650101117</div>
+            <div class="position">Spacecraft Innovation Specialist</div>
+        </div>
 
-    <!-- ใส่รูปของคุณในโฟลเดอร์เดียวกัน -->
-    <!-- ชื่อไฟล์ต้องเป็น: ประกายทิพย์ น้อยสิงห์.jpg -->
-    <img src="ประกายทิพย์ น้อยสิงห์.jpg" alt="profile" class="profile-img">
+        <div class="about-box">
+            <b>เกี่ยวกับฉัน:</b><br>
+            ผู้เชี่ยวชาญด้านการออกแบบยานอวกาศและระบบขนส่งระหว่างกาแล็กซี เดินทางสำรวจดาวเคราะห์มากกว่า 27 ดวง สื่อสารได้กว่า 14 ภาษาต่างดาว ร่วมพัฒนาเทคโนโลยี “Hyper Warp Drive” และเจ้าของรางวัล “Galactic Logistics Award”
+        </div>
 
-    <h1>นางสาวประการทิพย์ น้อยสิงห์</h1>
-    <h2>รหัสนักศึกษา : 6650101117</h2>
+        <div class="info-grid">
+            <div>
+                <div class="section-title">ABILITIES</div>
+                <ul>
+                    <li>สื่อสารกับมนุษย์ต่างดาวได้หลายภาษา</li>
+                    <li>ขับยานอวกาศความเร็วเหนือแสง</li>
+                    <li>วิเคราะห์แผนที่จักรวาลและหลุมดำ</li>
+                    <li>ควบคุม AI และหุ่นยนต์อัจฉริยะ</li>
+                    <li>เดินทางข้ามมิติได้อย่างปลอดภัย</li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-title">EQUIPMENTS</div>
+                <ul>
+                    <li>ชุดอวกาศ Quantum-X</li>
+                    <li>นาฬิกา Chrono Watch</li>
+                    <li>โดรน AI "Nova"</li>
+                    <li>ยาน Star Falcon</li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="info">
+        <div class="section-title">KEY MISSIONS</div>
+        <ul style="margin-bottom: 30px;">
+            <li>สำรวจดาวเคราะห์ลึกลับในระบบ Alpha Centauri</li>
+            <li>เจรจาสันติภาพระหว่างมนุษย์กับเผ่าพันธุ์ต่างดาว</li>
+            <li>สร้างสถานีขนส่งสินค้า Interstellar แห่งแรก</li>
+            <li>ค้นพบพลังงานสะอาดจากดาว Nebula-X</li>
+        </ul>
 
-      <p><span class="title">สาขาวิชา :</span> โลจิสติกส์และการคมนาคมขนส่ง</p>
+        <div class="contact-footer">
+            <div class="contact-item"><b>Galactic Mail:</b> prakaithip@starfleet.galaxy</div>
+            <div class="contact-item"><b>Quantum Signal:</b> 77X</div>
+            <div class="contact-item"><b>Station:</b> Orbit Station 9, Milky Way</div>
+            <div class="contact-item"><b>Interstellar:</b> +999-SPACE-777</div>
+        </div>
 
-      <p><span class="title">ความสามารถ :</span> มีทักษะด้านการวิเคราะห์ข้อมูล การบริหารจัดการ และการวางแผนระบบขนส่งอย่างมีประสิทธิภาพ สามารถเรียนรู้เทคโนโลยีใหม่ได้อย่างรวดเร็ว</p>
-
-      <p><span class="title">จุดเด่น :</span> เป็นคนมีความเป็นผู้นำ กล้าคิด กล้าตัดสินใจ มีความคิดสร้างสรรค์ และสามารถแก้ปัญหาเฉพาะหน้าได้ดี</p>
-
-      <p><span class="title">ประสบการณ์ :</span> มีความสนใจด้านธุรกิจดิจิทัล การตลาดออนไลน์ และการจัดการโลจิสติกส์สมัยใหม่ พร้อมทั้งมีประสบการณ์ในการทำงานร่วมกับทีมและบริหารโครงการภายในมหาวิทยาลัย</p>
-
-      <p><span class="title">เป้าหมายในอนาคต :</span> ต้องการพัฒนาตนเองให้เป็นผู้เชี่ยวชาญด้านโลจิสติกส์และซัพพลายเชนระดับสากล รวมถึงสร้างธุรกิจที่ประสบความสำเร็จในอนาคต</p>
-
-      <p><span class="title">เกี่ยวกับตัวฉัน :</span>
-      เป็นคนมุ่งมั่น ชอบเรียนรู้สิ่งใหม่ ๆ มีวิสัยทัศน์ในการทำงาน รักความก้าวหน้า และเชื่อว่าความสำเร็จเกิดจากความพยายามและวินัย
-      </p>
-
+        <div class="slogan">
+            “ไม่มีจักรวาลไหนไกลเกินกว่าความฝัน และไม่มีดาวดวงใดที่ฉันไปไม่ถึง”
+        </div>
     </div>
-
-    <a href="#" class="btn">WELCOME TO MY PROFILE</a>
-
-  </div>
 
 </body>
 </html>
